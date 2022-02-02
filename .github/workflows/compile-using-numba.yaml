@@ -1,12 +1,12 @@
 name: Compile using numba
 on: [push]
 jobs:
-  Compile:
+  compile:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python-version: [ '3.8', '3.9' ]
+        python-version: [ '3.8', '3.9', '3.10' ]
     name: Compile for python version ${{ matrix.python-version }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -20,5 +20,5 @@ jobs:
       - run: ls
       - uses: actions/upload-artifact@v2
         with: 
-          name: binary for python version ${{ matrix.python-version }} on ${{ matrix.os }}
+          name: compiled_modules
           path: pldist.*.*
