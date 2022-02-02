@@ -1,23 +1,15 @@
 name: Compile using numba
 on: [push]
 jobs:
-  compile:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        python-version: [ '3.8', '3.9', '3.10' ]
+  aws_compile:
+    runs-on: ubuntu-latest
+    container:
+      image: public.ecr.aws/sam/build-python3.8:latest
     name: Compile for python version ${{ matrix.python-version }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: 'x64'
-          cache: 'pip'
       - run: pip install -r requirements.txt
       - run: python kernels.py
-      - run: ls
       - uses: actions/upload-artifact@v2
         with: 
           name: compiled_modules
