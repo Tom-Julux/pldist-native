@@ -4,7 +4,7 @@ jobs:
   aws_compile:
     runs-on: ubuntu-latest
     container:
-      image: public.ecr.aws/sam/build-python3.8:latest
+      image: public.ecr.aws/sam/emulation-python3.8:latest
     name: Compile for python version ${{ matrix.python-version }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
