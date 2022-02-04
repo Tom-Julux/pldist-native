@@ -8,6 +8,7 @@ jobs:
     name: Compile for python version ${{ matrix.python-version }} on ${{ matrix.os }}
     steps:
       - run: sudo yum install tar
+      - run: sudo yum install python3.8
       - uses: actions/checkout@v2
       - run: pip install -r requirements.txt
       - run: python kernels.py
