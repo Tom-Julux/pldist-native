@@ -7,8 +7,8 @@ jobs:
       image: public.ecr.aws/amazonlinux/amazonlinux:latest
     name: Compile for python version ${{ matrix.python-version }} on ${{ matrix.os }}
     steps:
-      - run: yum install tar
-      - run: yum install python3.8
+      - run: yum install -y tar
+      - run: yum install -y python3.8
       - uses: actions/checkout@v2
       - run: pip install -r requirements.txt
       - run: python kernels.py
