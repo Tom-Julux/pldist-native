@@ -9,6 +9,7 @@ jobs:
     steps:
       - run: yum install -y tar
       - run: yum install -y gzip
+      - run: yum install -y python3-distutils
       - uses: actions/checkout@v2
       - run: pip install -r requirements.txt
       - run: python kernels.py
